@@ -54,7 +54,7 @@ const average = (arr) =>
 const KEY = "b06865a3";
 
 export default function App() {
-  const [query, setQuery] = useState("inception");
+  const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -95,13 +95,16 @@ export default function App() {
 
   useEffect(
     function () {
+      const controller = new AbortController();
+
       async function fetchMovies() {
         try {
           setIsLoading(true);
           setError("");
 
           const res = await fetch(
-            `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`
+            `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`,
+            { signal: controller.signal }
           );
 
           if (!res.ok)
@@ -110,10 +113,12 @@ export default function App() {
           const data = await res.json();
           if (data.Response === "False") throw new Error("Movie not found");
           setMovies(data.Search);
-          console.log(data.Search);
+          setError("");
         } catch (err) {
-          console.error(err.message);
-          setError(err.message);
+          if (err.name !== "AbortError") {
+            console.log(err.message);
+            setError(err.message);
+          }
         } finally {
           setIsLoading(false);
         }
@@ -124,7 +129,13 @@ export default function App() {
         setError("");
         return;
       }
+      
+      handleCloseMovie();
       fetchMovies();
+
+      return function () {
+        controller.abort();
+      };
     },
     [query]
   );
@@ -326,6 +337,22 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
 
   useEffect(
     function () {
+      function callback(e) {
+        if (e.code === "Escape") {
+          onCloseMovie();
+        }
+      }
+      document.addEventListener("keydown", callback);
+      return function () {
+        document.removeEventListener("keydown", callback);
+      };
+    },
+
+    [onCloseMovie]
+  );
+
+  useEffect(
+    function () {
       async function getMovieDetails() {
         setIsLoading(true);
         const res = await fetch(
@@ -346,7 +373,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
       document.title = `Movie | ${title}`;
       return function () {
         document.title = "usePopcorn";
-        console.log(`Clean up effect for movie ${title}`);
+        // console.log(`Clean up effect for movie ${title}`);
       };
     },
     [title]
@@ -361,11 +388,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
             <button className="btn-back" onClick={onCloseMovie}>
               &larr;
             </button>
-            <img
-              src={poster}
-              alt={`Poster of ${movie} movie`}
-              // className="details-overview"
-            />
+            <img src={poster} alt={`Poster of ${movie} movie`} />
             <div className="details-overview">
               <h2>{title}</h2>
               <p>
@@ -406,8 +429,6 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
             <p>Starring {actors}</p>
             <p>Directed by {director}</p>
           </section>
-
-          {selectedId}
         </>
       )}
     </div>

@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 
-// "Escape"
 const useKey = (key, action) => {
   useEffect(
     function () {

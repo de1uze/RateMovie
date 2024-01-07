@@ -9,7 +9,6 @@ const useMovies = (query) => {
 
   useEffect(
     function () {
-      //   callback?.();
 
       const controller = new AbortController();
 
@@ -32,7 +31,6 @@ const useMovies = (query) => {
           setError("");
         } catch (err) {
           if (err.name !== "AbortError") {
-            console.log(err.message);
             setError(err.message);
           }
         } finally {
@@ -46,7 +44,6 @@ const useMovies = (query) => {
         return;
       }
 
-      // handleCloseMovie();
       fetchMovies();
 
       return function () {

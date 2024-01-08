@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# usePopcorn Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is built using React and serves as a movie search application.
 
-## Available Scripts
+## Components
 
-In the project directory, you can run:
+The project includes the following components:
 
-### `npm start`
+- `Box`: This component is a box that can be opened or closed.
+- `ErrorMessage`: This component is used to display error messages.
+- `Loader`: This component is used to display the loading status.
+- `Logo`: This component displays the project logo.
+- `Main`: This component forms the main part of the page.
+- `Movie`: This component displays information about a movie.
+- `MovieDetails`: This component displays details about a movie.
+- `MovieList`: This component displays a list of movies.
+- `NavBar`: This component displays the navigation bar.
+- `NumResults`: This component displays the number of search results.
+- `Search`: This component displays a search input.
+- `StarRating`: This component displays a star rating system.
+- `WatchedMovie`: This component displays information about a watched movie.
+- `WatchedMoviesList`: This component displays a list of watched movies.
+- `WatchedSummary`: This component displays a summary of watched movies.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Hooks
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The project includes the following hooks:
 
-### `npm test`
+- `useKey`: This hook is used to manage key events.
+- `useLocalStorageState`: This hook is used to manage state in LocalStorage.
+- `useMovies`: This hook is used to fetch movie information from the API.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation and Setup
 
-### `npm run build`
+To install and setup the project, run the following commands:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+git clone https://github.com/AmirrMahmoudi/usepopcorn.git
+cd usepopcorn
+npm install
+npm start
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Then, go to http://localhost:3000 in your browser to view the project.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# usePopcorn Project
 
-### `npm run eject`
+This project is built using React and serves as a movie search application.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Live Demo
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+You can view a live demo of the project here.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+https://usepopcorn.netlify.app/
